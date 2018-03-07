@@ -60,7 +60,7 @@ func TestParserLoadValuesFile(t *testing.T) {
 		"invalid-syntax.tfvars": {
 			"foo bar baz\n",
 			map[string]cty.Value{},
-			1, // attribute or block definition required
+			2, // attribute or block definition required, and unexpected foo block (due to recovery)
 		},
 		"block.tfvars": {
 			"foo = true\ninvalid {\n}\n",
